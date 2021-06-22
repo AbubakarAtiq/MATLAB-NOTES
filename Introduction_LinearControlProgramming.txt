@@ -1,0 +1,10 @@
+1.Linear control system lab manual presents a series of experiments dealing with all
+topics covered in theory course Linear Control systems and provides an introduction to 
+control system starting with open loop control to feedback control system.
+2.Each experiment is accompanied by a set of objectives, a list of equipmet required followed
+by a discussion of theoretical concepts that are investigated or analyzed. After each experiment,
+students are required to comment on the results of the experiment and the lab exercise.
+3.The sequence and scope of the experiments in this manual are related to the theoretical
+material covered in the text book and analysis based on control system application.
+All the experiments have been tested and revised where necessary to improve clarity.
+Any comments or suggestions to improve the style, scope or clarity of any experiment are welcome.

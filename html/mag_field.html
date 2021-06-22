@@ -1,0 +1,201 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>mag_field</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-06-07"><meta name="DC.source" content="mag_field.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">%{
+</span><span class="comment">                                    ELECTRIC MACHINERY FUNDAMENTALS
+</span><span class="comment">                                    AC MACHINERY FUNDAMENTALS
+</span><span class="comment">PAGE NO.243
+</span><span class="comment">EXAMPLE 4-1:
+</span><span class="comment">CREATE a matlab program that models the behavior of a rotating magnetic
+</span><span class="comment">field in the three-phase stator.
+</span><span class="comment">m-file:mag_field.m
+</span><span class="comment">m-file to calculate the net magnetic field produced by a three-phase
+</span><span class="comment">stator.
+</span><span class="comment">%}
+</span><span class="comment">% set up the basic conditions.</span>
+j=sqrt(-1);
+bmax=1; <span class="comment">%normalize bmax to 1</span>
+freq=60;<span class="comment">%60 Hz</span>
+w=2*pi*freq;<span class="comment">%angular velocity (rad/s)</span>
+<span class="comment">% first, generate the three component magnetic fields</span>
+t=0:1/6000:1/60;
+Baa=sin(w*t).*(cos(0)+j*sin(0));
+Bbb=sin(w*t-2*pi/3).*(cos(2*pi/3)+j*sin(2*pi/3));
+Bcc=sin(w*t+2*pi/3).*(cos(-2*pi/3)+j*sin(-2*pi/3));
+<span class="comment">% calculate Bnet</span>
+Bnet=Baa+Bbb+Bcc;
+<span class="comment">% calculate a circle representing the expected maximum</span>
+<span class="comment">% value of Bnet</span>
+circle=1.5*(cos(w*t)+j*sin(w*t));
+<span class="comment">%{
+</span><span class="comment">                                                Plot the magnitude and
+</span><span class="comment">                                                direction of the resulting
+</span><span class="comment">                                                magnetic fields. Note that
+</span><span class="comment">                                                Baa is black, Bbb is blue,
+</span><span class="comment">                                                Bcc is magenta, and Bnet is
+</span><span class="comment">                                                red.
+</span><span class="comment">
+</span><span class="comment">%}
+</span><span class="keyword">for</span> ii=1:length(t)
+                <span class="comment">%plot the reference circle</span>
+                plot(circle,<span class="string">'k'</span>);
+                hold <span class="string">on</span>;
+                <span class="comment">%plot the four magnetic fields</span>
+                plot([0 real(Baa(ii))],[0 imag (Baa(ii))],<span class="string">'k'</span>,<span class="string">'LineWidth'</span>,2);
+                plot([0 real(Bbb(ii))],[0 imag (Bbb(ii))],<span class="string">'b'</span>,<span class="string">'LineWidth'</span>,2);
+                plot([0 real(Bcc(ii))],[0 imag (Bcc(ii))],<span class="string">'m'</span>,<span class="string">'LineWidth'</span>,2);
+                plot([0 real(Bnet(ii))],[0 imag (Bnet(ii))],<span class="string">'r'</span>,<span class="string">'LineWidth'</span>,3);
+                axis <span class="string">square</span>;
+                axis ([-2 2 -2 2]);
+                drawnow;
+                hold <span class="string">off</span>;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Error using imag
+Not enough input arguments.
+
+Error in mag_field (line 41)
+                plot([0 real(Baa(ii))],[0 imag (Baa(ii))],'k','LineWidth',2);
+</pre><p><img src="mag_field_eq17467035999183504765.png" alt="$$e^{\pi i} + 1 = 0$$"></p><pre class="codeinput"><span class="comment">%$$B_net$$</span>
+<span class="comment">%</span>
+<span class="comment">%{
+</span><span class="comment">                When this program is executed, it draws lines corresponding
+</span><span class="comment">                to the three component magnetic fields as well as a line
+</span><span class="comment">                corresponding to the net magnetic field. Execute this
+</span><span class="comment">                program and observe the behavior of $$B_net$$
+</span><span class="comment">%}</span>
+</pre><pre class="codeinput"><span class="comment">%$$B_net$$</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%{
+                                    ELECTRIC MACHINERY FUNDAMENTALS
+                                    AC MACHINERY FUNDAMENTALS
+PAGE NO.243
+EXAMPLE 4-1:
+CREATE a matlab program that models the behavior of a rotating magnetic
+field in the three-phase stator.
+m-file:mag_field.m
+m-file to calculate the net magnetic field produced by a three-phase
+stator.
+%}
+% set up the basic conditions.
+j=sqrt(-1);
+bmax=1; %normalize bmax to 1
+freq=60;%60 Hz
+w=2*pi*freq;%angular velocity (rad/s)
+% first, generate the three component magnetic fields
+t=0:1/6000:1/60;
+Baa=sin(w*t).*(cos(0)+j*sin(0));
+Bbb=sin(w*t-2*pi/3).*(cos(2*pi/3)+j*sin(2*pi/3));
+Bcc=sin(w*t+2*pi/3).*(cos(-2*pi/3)+j*sin(-2*pi/3));
+% calculate Bnet
+Bnet=Baa+Bbb+Bcc;
+% calculate a circle representing the expected maximum
+% value of Bnet
+circle=1.5*(cos(w*t)+j*sin(w*t));
+%{
+                                                Plot the magnitude and
+                                                direction of the resulting
+                                                magnetic fields. Note that
+                                                Baa is black, Bbb is blue,
+                                                Bcc is magenta, and Bnet is
+                                                red.
+
+%}
+for ii=1:length(t)
+                %plot the reference circle
+                plot(circle,'k');
+                hold on;
+                %plot the four magnetic fields
+                plot([0 real(Baa(ii))],[0 imag (Baa(ii))],'k','LineWidth',2);
+                plot([0 real(Bbb(ii))],[0 imag (Bbb(ii))],'b','LineWidth',2);
+                plot([0 real(Bcc(ii))],[0 imag (Bcc(ii))],'m','LineWidth',2);
+                plot([0 real(Bnet(ii))],[0 imag (Bnet(ii))],'r','LineWidth',3);
+                axis square;
+                axis ([-2 2 -2 2]);
+                drawnow;
+                hold off;
+end
+%%
+%%
+% 
+% $$e^{\pi i} + 1 = 0$$
+%%
+%%
+%
+%$$B_net$$
+%
+%{
+                When this program is executed, it draws lines corresponding
+                to the three component magnetic fields as well as a line
+                corresponding to the net magnetic field. Execute this
+                program and observe the behavior of $$B_net$$
+%}
+%%
+%$$B_net$$
+##### SOURCE END #####
+--></body></html>
