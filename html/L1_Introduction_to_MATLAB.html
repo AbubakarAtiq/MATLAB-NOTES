@@ -1,0 +1,268 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>L1_Introduction_to_MATLAB</title><meta name="generator" content="MATLAB 8.5"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-08-29"><meta name="DC.source" content="L1_Introduction_to_MATLAB.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1></h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Introduction to MATLAB</a></li></ul></div><h2>Introduction to MATLAB<a name="1"></a></h2><p><b>Module:1</b></p><pre class="codeinput"><span class="comment">%{
+</span><span class="comment">Introduction
+</span><span class="comment">1. Stands for MATrix LABoratory
+</span><span class="comment">2. A special purpose computer program optimized to performed engineering
+</span><span class="comment">and scientific calculations.
+</span><span class="comment">3.Or it is a technical programming language.
+</span><span class="comment">4. Started with simple matrix manipulation and grown with the capability of
+</span><span class="comment">solving any technical problem.
+</span><span class="comment">5. A proprietary programming language developed by MathWorks.
+</span><span class="comment">6. It provides a very extensive library of predefined functions to make
+</span><span class="comment">technical programming task easier and more efficient.
+</span><span class="comment">7. Superior on other language like C, FORTRAN.
+</span><span class="comment">8. MATLAB can be interfaced with various hardwares like TMS320C6713,
+</span><span class="comment">Ardunio, FPGA, NI DAQ etc. to enhance the data processing capabilities of
+</span><span class="comment">MATLAB.
+</span><span class="comment">%*Research, Development, and Design challenges*
+</span><span class="comment">1. Demands on engineers and scientists are increasing
+</span><span class="comment">    1.1 Proliferation of products and technologies
+</span><span class="comment">    1.2 Decreased development time and product life cycles
+</span><span class="comment">    1.3 Pressure to meet deadlines, while evaluating design tradeoffs
+</span><span class="comment">    1.4 Variety of projects and tasks that are rarely straightforward
+</span><span class="comment">2. Experimenting and programming is expensive.
+</span><span class="comment">%*MATLAB Capabilities*
+</span><span class="comment">1. Numerical computation
+</span><span class="comment">2. Data access
+</span><span class="comment">3. Data analysis and visualization
+</span><span class="comment">4. Programming and algorithm development
+</span><span class="comment">5. Application Development and Deployment
+</span><span class="comment">%*Data Access and Connectivity to measurement Hardware*
+</span><span class="comment">1. Data Access
+</span><span class="comment">    1.1 Standard and scientific data and file formats
+</span><span class="comment">    1.2 Excel
+</span><span class="comment">    1.3 Databases
+</span><span class="comment">2. Hardware connectivity
+</span><span class="comment">    2.1 Data Acquisition hardware
+</span><span class="comment">    2.2 Stand alone instruments and devices
+</span><span class="comment">%*Data Analysis and Visualization*
+</span><span class="comment">1. Preprocessing
+</span><span class="comment">2. Fast and accurate analysis
+</span><span class="comment">    2.1 Correlation
+</span><span class="comment">    2.2  Fourier analysis and filtering
+</span><span class="comment">    2.3 Basic stats and curve fitting
+</span><span class="comment">3. Built-in graphics for engineering and science
+</span><span class="comment">    3.1 2-D plots, 3-D graphics and volume visualization
+</span><span class="comment">    3.2 Interactive tools to annotate, analyze, and customize
+</span><span class="comment">%*Advantage of MATLAB for technical programming*
+</span><span class="comment">1. Easy to use
+</span><span class="comment">2. Platform independent
+</span><span class="comment">3. Pre-defined functions
+</span><span class="comment">4. Device independent plotting
+</span><span class="comment">5. Graphical user interface
+</span><span class="comment">6. MATLAB complier
+</span><span class="comment">%%
+</span><span class="comment">% *Disadvantages*
+</span><span class="comment">1. Slow speed: Interpreted language rather than complied one.
+</span><span class="comment">    solution: by properly structuring the MATLAB program
+</span><span class="comment">2. Cost: only cost effective for business.
+</span><span class="comment">% *Alternatives to MATLAB*
+</span><span class="comment">1. MATLAB is an excellent softwate, but it is commerical and its price is
+</span><span class="comment">very high. Other alternatives are available (Octave, Scilab, Freemat) but
+</span><span class="comment">each one has pros and cons.
+</span><span class="comment">% *Applications*
+</span><span class="comment">1. Technical computing
+</span><span class="comment">MATLAB and toolboxes for mathematical computation, analysis, visualization,
+</span><span class="comment">and algorithm development.
+</span><span class="comment">2. Control Design
+</span><span class="comment">Simulink, MATLAB, and related tools for model-based design of control
+</span><span class="comment">systems, from analysis of algorithms to modeling and simulation, rapid
+</span><span class="comment">prototyping, and code generation for embedded systems.
+</span><span class="comment">3. DSP and Communications design
+</span><span class="comment">Simulink, MATLAB, and related tools for system-level design of DSP and
+</span><span class="comment">communication systems, from algorithm development to simulation, rapid
+</span><span class="comment">prototyping, and verification.
+</span><span class="comment">4. Test and Measurement
+</span><span class="comment">MATLAB tools for communicating with and collecting data from external
+</span><span class="comment">hardware.
+</span><span class="comment">5. Image processing
+</span><span class="comment">MATLAB tools for image processing, from data import to analysis,
+</span><span class="comment">enchancement, and application development
+</span><span class="comment">6. Financial Modeling and analysis
+</span><span class="comment">MATLAB and toolboxes for analysis, modeling, simulation, and optimization
+</span><span class="comment">of financial data.
+</span><span class="comment">%*Industries*
+</span><span class="comment">1. Aerospace and defense
+</span><span class="comment">2. Automotive
+</span><span class="comment">3. Biotech, Pharmaceutical, and Medical
+</span><span class="comment">4. Education
+</span><span class="comment">5. Communications
+</span><span class="comment">%}</span>
+</pre><p><b>MATLAB version</b></p><pre class="codeinput"><span class="comment">%{
+</span><span class="comment">1. MATLAB 1.0:1984
+</span><span class="comment">2. MATLAB 2:1986
+</span><span class="comment">3. MATLAB 3:1987
+</span><span class="comment">AND SOON.
+</span><span class="comment">%}</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+
+%% Introduction to MATLAB
+% *Module:1*
+%{
+Introduction
+1. Stands for MATrix LABoratory
+2. A special purpose computer program optimized to performed engineering
+and scientific calculations.
+3.Or it is a technical programming language.
+4. Started with simple matrix manipulation and grown with the capability of
+solving any technical problem.
+5. A proprietary programming language developed by MathWorks.
+6. It provides a very extensive library of predefined functions to make
+technical programming task easier and more efficient.
+7. Superior on other language like C, FORTRAN.
+8. MATLAB can be interfaced with various hardwares like TMS320C6713,
+Ardunio, FPGA, NI DAQ etc. to enhance the data processing capabilities of
+MATLAB.
+%*Research, Development, and Design challenges*
+1. Demands on engineers and scientists are increasing
+    1.1 Proliferation of products and technologies
+    1.2 Decreased development time and product life cycles
+    1.3 Pressure to meet deadlines, while evaluating design tradeoffs
+    1.4 Variety of projects and tasks that are rarely straightforward
+2. Experimenting and programming is expensive.
+%*MATLAB Capabilities*
+1. Numerical computation
+2. Data access
+3. Data analysis and visualization
+4. Programming and algorithm development
+5. Application Development and Deployment
+%*Data Access and Connectivity to measurement Hardware*
+1. Data Access
+    1.1 Standard and scientific data and file formats
+    1.2 Excel
+    1.3 Databases
+2. Hardware connectivity
+    2.1 Data Acquisition hardware
+    2.2 Stand alone instruments and devices
+%*Data Analysis and Visualization*
+1. Preprocessing
+2. Fast and accurate analysis
+    2.1 Correlation
+    2.2  Fourier analysis and filtering
+    2.3 Basic stats and curve fitting
+3. Built-in graphics for engineering and science
+    3.1 2-D plots, 3-D graphics and volume visualization
+    3.2 Interactive tools to annotate, analyze, and customize
+%*Advantage of MATLAB for technical programming*
+1. Easy to use
+2. Platform independent
+3. Pre-defined functions
+4. Device independent plotting
+5. Graphical user interface
+6. MATLAB complier
+%%
+% *Disadvantages*
+1. Slow speed: Interpreted language rather than complied one.
+    solution: by properly structuring the MATLAB program
+2. Cost: only cost effective for business.
+% *Alternatives to MATLAB*
+1. MATLAB is an excellent softwate, but it is commerical and its price is
+very high. Other alternatives are available (Octave, Scilab, Freemat) but
+each one has pros and cons.
+% *Applications*
+1. Technical computing
+MATLAB and toolboxes for mathematical computation, analysis, visualization,
+and algorithm development.
+2. Control Design
+Simulink, MATLAB, and related tools for model-based design of control
+systems, from analysis of algorithms to modeling and simulation, rapid
+prototyping, and code generation for embedded systems.
+3. DSP and Communications design
+Simulink, MATLAB, and related tools for system-level design of DSP and
+communication systems, from algorithm development to simulation, rapid
+prototyping, and verification.
+4. Test and Measurement
+MATLAB tools for communicating with and collecting data from external
+hardware.
+5. Image processing
+MATLAB tools for image processing, from data import to analysis,
+enchancement, and application development
+6. Financial Modeling and analysis
+MATLAB and toolboxes for analysis, modeling, simulation, and optimization
+of financial data.
+%*Industries*
+1. Aerospace and defense
+2. Automotive
+3. Biotech, Pharmaceutical, and Medical
+4. Education
+5. Communications
+%}
+%%
+% *MATLAB version*
+%{
+1. MATLAB 1.0:1984
+2. MATLAB 2:1986
+3. MATLAB 3:1987
+AND SOON.
+%}
+
+##### SOURCE END #####
+--></body></html>
