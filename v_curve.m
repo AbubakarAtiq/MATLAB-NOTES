@@ -1,7 +1,7 @@
 %{
     Chapter no.6
 Synccronous motors
-----------------------------
+----------------------------------------------
 Electric machinery fundamentals
 ----------------------------------------------
 M-file:v_curve.m
